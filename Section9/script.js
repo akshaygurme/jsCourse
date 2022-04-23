@@ -225,6 +225,92 @@
 
 ///// Practise
 
-const arr = ['one', 'two', 'three', 'four', 'four'];
+// const arr = ['one', 'two', 'three', 'four', 'four'];
 
-console.log(new Set(arr).size);
+// console.log(new Set(arr).size);
+
+//coding challenge 3
+
+//// 1.
+
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
+
+// const events = [...new Set(gameEvents.values())];
+
+// console.log(events);
+
+///// 2.
+// gameEvents.delete(64);
+// // console.log(gameEvents);
+
+// ///// 3.
+
+// ///// 3. and 4.
+// let prev = 0,
+//   diff = 0;
+// for (const [time, event] of gameEvents) {
+//   //   console.log(event);
+
+//   console.log(
+//     `${time < 45 ? '[FIRST HALF]' : '[SECOND HALF]'}${time}: ${event}`
+//   );
+//   diff += time - prev;
+//   prev = time;
+// }
+
+// let average = diff / gameEvents.size;
+// console.log(
+//   `An event happened, on average, every ${Math.floor(average)} minutes`
+// );
+
+// challenge 4
+let text = document.createElement('textarea');
+let btn = document.createElement('button');
+
+document.body.append(btn);
+btn.innerHTML = 'Click Me';
+document.body.append(text);
+
+btn.onclick = function () {
+  //   console.log(text.value);
+  let input = text.value;
+  const variableNames = input.split('\n');
+
+  //   console.log(variableNames);
+
+  let finalResult = [];
+  let count = 1;
+  //loop over each variable name
+  for (let v of variableNames) {
+    // to get index we can use the entries()
+    if (v !== ' ' && v !== '') {
+      // convert all string to lowercase
+      v = v.toLowerCase().trim();
+      // divide into two halfs
+      let [firstHalf, secondHalf] = v.split('_');
+      // console.log(firstHalf, secondHalf);
+
+      // make second half's 1st letter capital
+      secondHalf = secondHalf[0].toUpperCase() + secondHalf.slice(1);
+      // console.log(second);
+      let result = firstHalf + secondHalf;
+      finalResult.push(firstHalf + secondHalf);
+      // print output
+      console.log(`${result.padEnd(20, ' ')}${'✔'.repeat(count)}`);
+      count++;
+    }
+  }
+  //   console.log(...finalResult);
+};
